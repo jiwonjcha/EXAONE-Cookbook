@@ -7,9 +7,9 @@ Jupyter 노트북으로 EXAONE 에이전트를 단계별로 학습합니다. **�
 ## 한 번만 설치 (저장소 루트)
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
+python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-pip install -e ./exaone
+pip install -e .
 cp .env.example .env
 python -m ipykernel install --user --name exaone-cookbook --display-name "Python (exaone-cookbook)"
 ```
@@ -34,6 +34,8 @@ ROOT = exaone.project_root()
 - 트랙 데이터 경로: `ROOT / "recipes" / "trackNN_..."` (각 노트북의 `TRACKnn` 변수).
 
 `from exaone.llm import ...` 처럼 서브모듈 직접 import 는 쓰지 않고, `import exaone` 뒤 점(`.`) 접근만 사용합니다.
+
+**K-EXAONE 2.0 API:** chitchat·단발 QA는 `enable_thinking=False`, `preserve_thinking=False`. agentic(`ToolAgent`·Track 02+)은 둘 다 `True` — **효과**는 2.0+, 1.0 payload에는 실리지만 무시됩니다. → [`docs/k_exaone_2.md`](../docs/k_exaone_2.md)
 
 ---
 
